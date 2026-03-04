@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from ckeditor_demo.settings import MEDIA_ROOT
+
 BASE_DIR = Path ( __file__ ).resolve ().parent.parent
 
 SECRET_KEY = 'django-insecure-i(ur3m2=&$vwzseshhfi28x7t#&qycl6t7c522xxahynf$k27t'
@@ -80,3 +82,6 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
