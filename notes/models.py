@@ -1,6 +1,17 @@
 from django.db import models
 from users.models import User
 
+COLORS = [
+    ('white', 'White'),
+    ('black', 'Black'),
+    ('yellow', 'Yellow'),
+    ('orange', 'Orange'),
+    ('green', 'Green'),
+    ('red', 'Red'),
+    ('blue', 'Blue'),
+    ('pink', 'Pink'),
+]
+
 
 class TimeStampedModel ( models.Model ) :
     created_at = models.DateTimeField ( auto_now_add=True )
@@ -28,7 +39,7 @@ class Note ( TimeStampedModel ) :
     category = models.ForeignKey ( Category, null=True, blank=True, on_delete=models.SET_NULL )
     title = models.CharField ( max_length=100 )
     content = models.TextField ( blank=True )
-    color = models.CharField ( max_length=50 )
+    color = models.CharField ( max_length=50, choices=COLORS, default='white' )
     is_pinned = models.BooleanField ( default=False )
     is_archived = models.BooleanField ( default=False )
 
