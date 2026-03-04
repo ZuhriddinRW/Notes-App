@@ -10,7 +10,7 @@ class TimeStampedModel ( models.Model ) :
         abstract = True
 
 
-class Category ( models.Model, TimeStampedModel ) :
+class Category ( TimeStampedModel ) :
     user = models.ForeignKey ( User, on_delete=models.CASCADE )
     name = models.CharField ( max_length=50 )
     color = models.CharField ( max_length=50 )
@@ -19,7 +19,7 @@ class Category ( models.Model, TimeStampedModel ) :
         return self.name
 
 
-class Note ( models.Model, TimeStampedModel ) :
+class Note ( TimeStampedModel ) :
     user = models.ForeignKey ( User, on_delete=models.CASCADE )
     category = models.ForeignKey ( Category, null=True, blank=True, on_delete=models.SET_NULL )
     title = models.CharField ( max_length=100 )

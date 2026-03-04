@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from ckeditor_demo.settings import MEDIA_ROOT
+from django.conf.global_settings import AUTH_USER_MODEL
 
 BASE_DIR = Path ( __file__ ).resolve ().parent.parent
 
@@ -85,3 +85,5 @@ STATIC_URL = 'static/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'users.User'
