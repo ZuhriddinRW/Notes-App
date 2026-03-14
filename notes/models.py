@@ -2,46 +2,48 @@ from django.db import models
 from users.models import User
 
 COLORS = [
-    ('white', 'White'),
-    ('black', 'Black'),
-    ('yellow', 'Yellow'),
-    ('orange', 'Orange'),
-    ('green', 'Green'),
-    ('red', 'Red'),
-    ('blue', 'Blue'),
-    ('pink', 'Pink'),
+    ("white", "White"),
+    ("black", "Black"),
+    ("yellow", "Yellow"),
+    ("orange", "Orange"),
+    ("green", "Green"),
+    ("red", "Red"),
+    ("blue", "Blue"),
+    ("pink", "Pink"),
 ]
 
 
-class TimeStampedModel ( models.Model ) :
-    created_at = models.DateTimeField ( auto_now_add=True )
-    updated_at = models.DateTimeField ( auto_now=True )
+class TimeStampedModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta :
+    class Meta:
         abstract = True
 
 
-class Category ( TimeStampedModel ) :
-    user = models.ForeignKey ( User, on_delete=models.CASCADE )
-    name = models.CharField ( max_length=50 )
-    color = models.CharField ( max_length=50 )
+class Category(TimeStampedModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
 
-    class Meta :
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
-    def __str__(self) :
+    def __str__(self):
         return self.name
 
 
-class Note ( TimeStampedModel ) :
-    user = models.ForeignKey ( User, on_delete=models.CASCADE )
-    category = models.ForeignKey ( Category, null=True, blank=True, on_delete=models.SET_NULL )
-    title = models.CharField ( max_length=100 )
-    content = models.TextField ( blank=True )
-    color = models.CharField ( max_length=50, choices=COLORS, default='white' )
-    is_pinned = models.BooleanField ( default=False )
-    is_archived = models.BooleanField ( default=False )
+class Note(TimeStampedModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category, null=True, blank=True, on_delete=models.SET_NULL
+    )
+    title = models.CharField(max_length=100)
+    content = models.TextField(blank=True)
+    color = models.CharField(max_length=50, choices=COLORS, default="white")
+    is_pinned = models.BooleanField(default=False)
+    is_archived = models.BooleanField(default=False)
 
-    def __str__(self) :
+    def __str__(self):
         return self.title
