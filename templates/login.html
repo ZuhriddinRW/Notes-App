@@ -19,19 +19,41 @@
 			<div class="flex flex-col items-center w-100 bg-white rounded-2xl m-5 p-5">
 				<h1 class="text-3xl mb-2">Login</h1>
 				<hr class="w-full mt-2">
-				<div class="self-start w-full h-full flex flex-row justify-between items-center my-5">
-					<label for="username" class="text-2xs">Username</label>
-					<input id="username" type="text" class="w-60 p-1 border rounded-xl">
+
+				<form method="post">
+					{% csrf_token %}
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center my-5">
+						<label for="username" class="text-2xs">Username</label>
+						<input id="username" name="username" type="text" class="w-60 p-1 border rounded-xl">
+						{% if form.username.errors %}
+						{% for error in form.username.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="password" class="text-2xs">Password</label>
+						<input id="password" name="password" type="password" class="w-60 p-1 border rounded-xl">
+						{% if form.password.errors %}
+						{% for error in form.password.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+					<div class="self-start w-full h-full flex flex-row justify-center">
+						<button type="submit"
+							class="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer p-3 mt-5 rounded-sm text-xl text-white">Sign
+							In</button>
+					</div>
+				</form>
+
+				<div class="self-start w-full h-full flex flex-row justify-center mt-5">
+					<p class="text-sm">Don't have an account?</p>
+					<a href="{% url 'register' %}" class="text-blue-600 hover:underline ml-1">Register</a>
 				</div>
-				<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
-					<label for="password" class="text-2xs">Password</label>
-					<input id="password" type="password" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-center">
-					<button type="submit"
-						class="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer p-3 mt-5 rounded-sm text-xl text-white">Sign
-						In</button>
-				</div>
+
 			</div>
 		</div>
 	</div>
