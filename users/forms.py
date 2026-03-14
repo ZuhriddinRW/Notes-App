@@ -8,7 +8,7 @@ User = get_user_model()
 class SignUpForm(UserCreationForm):
     username = forms.CharField(max_length=150, required=True)
     email = forms.EmailField(required=True)
-    firs_name = forms.CharField(max_length=30, required=False)
+    first_name = forms.CharField(max_length=30, required=False)
     last_name = forms.CharField(max_length=150, required=False)
 
     class Meta:

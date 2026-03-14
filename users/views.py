@@ -18,7 +18,7 @@ def register_view(request):
     else:
         form = SignUpForm()
 
-    return render(request, "templates/register.html", {"form": form})
+    return render(request, "register.html", {"form": form})
 
 
 def login_view(request):
@@ -37,7 +37,7 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, "templates/login.html", {"form": form})
+    return render(request, "login.html", {"form": form})
 
 
 @login_required(login_url="login")

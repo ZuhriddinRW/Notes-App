@@ -13,37 +13,83 @@
 <body class="bg-gray-900">
 	<div class="w-full h-screen flex flex-col">
 		<div class="w-full flex justify-start p-3">
-			<a href="#" class="text-white text-4xl hover:opacity-70">Back</a>
+			<a href="{% url 'login' %}" class="text-white text-4xl hover:opacity-70">Back</a>
 		</div>
 		<div class="w-full h-full flex justify-center items-center">
 			<div class="flex flex-col items-center w-100 bg-white rounded-2xl m-5 p-5">
+
 				<h1 class="text-3xl mb-2">Register</h1>
 				<hr class="w-full mt-2">
-				<div class="self-start w-full h-full flex flex-row justify-between items-center my-5">
-					<label for="firstname" class="text-2xs">First Name</label>
-					<input id="firstname" type="text" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
-					<label for="lastname" class="text-2xs">Last Name</label>
-					<input id="lastname" type="text" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
-					<label for="username" class="text-2xs">Username</label>
-					<input id="username" type="text" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
-					<label for="email" class="text-2xs">Email</label>
-					<input id="email" type="email" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
-					<label for="password" class="text-2xs">Password</label>
-					<input id="password" type="password" class="w-60 p-1 border rounded-xl">
-				</div>
-				<div class="self-start w-full h-full flex flex-row justify-center">
-					<button type="submit"
-						class="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer p-3 mt-5 rounded-sm text-xl text-white">Sign
-						Up</button>
-				</div>
+
+				<form method="POST">
+					{% csrf_token %}
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center my-5">
+						<label for="firstname" class="text-2xs">First Name</label>
+						<input id="firstname" name="first_name" type="text" class="w-60 p-1 border rounded-xl">
+						{% if form.first_name.errors %}
+						{% for error in form.first_name.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="lastname" class="text-2xs">Last Name</label>
+						<input id="lastname" name="last_name" type="text" class="w-60 p-1 border rounded-xl">
+						{% if form.last_name.errors %}
+						{% for error in form.last_name.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="username" class="text-2xs">Username</label>
+						<input id="username" name="username" type="text" class="w-60 p-1 border rounded-xl">
+						{% if form.username.errors %}
+						{% for error in form.username.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="email" class="text-2xs">Email</label>
+						<input id="email" name="email" type="email" class="w-60 p-1 border rounded-xl">
+						{% if form.email.errors %}
+						{% for error in form.email.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="password1" class="text-2xs">Password</label>
+						<input id="password1" name="password1" type="password" class="w-60 p-1 border rounded-xl">
+						{% if form.password1.errors %}
+						{% for error in form.password1.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-between items-center mb-5">
+						<label for="password2" class="text-2xs">Confirm Password</label>
+						<input id="password2" name="password2" type="password" class="w-60 p-1 border rounded-xl">
+						{% if form.password2.errors %}
+						{% for error in form.password2.errors %}
+						<p class="text-red-500 text-xs mt-1">{{ error }}</p>
+						{% endfor %}
+						{% endif %}
+					</div>
+
+					<div class="self-start w-full h-full flex flex-row justify-center">
+						<button type="submit"
+							class="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer p-3 mt-5 rounded-sm text-xl text-white">Sign
+							Up</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
