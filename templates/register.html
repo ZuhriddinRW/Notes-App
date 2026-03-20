@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/static/output.css">
+	<link rel="stylesheet" href="{% static 'output.css' %}">
 	<link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=59849&format=png&color=000000"
 		type="image/x-icon">
 	<title>Register</title>
@@ -13,7 +14,7 @@
 <body class="bg-gray-900">
 	<div class="w-full h-screen flex flex-col">
 		<div class="w-full flex justify-start p-3">
-			<a href="{% url 'login' %}" class="text-white text-4xl hover:opacity-70">Back</a>
+			<a href="{% url 'welcome' %}" class="text-white text-4xl hover:opacity-70">Back</a>
 		</div>
 		<div class="w-full h-full flex justify-center items-center">
 			<div class="flex flex-col items-center w-100 bg-white rounded-2xl m-5 p-5">

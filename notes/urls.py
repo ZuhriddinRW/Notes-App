@@ -4,5 +4,6 @@ from .views import *
 
 urlpatterns = [
     path("", welcome, name="welcome"),
-    path("home/", home, name="home"),
+    path("notes/", NotesListView.as_view(), name="notes"),
+    path("notes/add", NoteAddView.as_view(), name="add"),
 ]

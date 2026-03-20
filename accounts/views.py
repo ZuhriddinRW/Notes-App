@@ -12,7 +12,7 @@ def register_view(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("home")
+            return redirect("notes")
         else:
             messages.error(request, "Unsuccessful registration. Invalid information.")
     else:
@@ -31,7 +31,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect("home")
+                return redirect("notes")
             else:
                 messages.error(request, "Invalid username or password.")
     else:
