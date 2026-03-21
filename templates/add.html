@@ -14,9 +14,14 @@
 
 <body class="bg-gray-900">
 	<div class="w-full h-screen flex flex-col">
-		<div class="w-full flex justify-start p-3">
-			<a href="{% url 'notes' %}" class="text-white text-4xl hover:opacity-70">Back</a>
-		</div>
+		<div
+            class="w-3/4 self-center z-10 rounded-2xl h-20 p-4 bg-slate-700/30 flex flex-row items-center lg:text-4xl md:text-3xl sm:text-2xl sticky top-5 backdrop-blur-lg">
+            <a href="{% url 'notes' %}" class="me-4 text-white font-bold italic">Notes App</a>
+            <a href="{% url 'archived' %}" class="me-auto text-white">Archive</a>
+            <a href="{% url 'add' %}" class="text-white hover:opacity-70">Add</a>
+            <a href="{% url 'profile' user.pk %}" class="mx-4 text-white hover:opacity-70">Profile</a>
+            <a href="{% url 'logout' %}" class="text-white hover:opacity-70">Logout</a>
+        </div>
 		<div class="w-full h-full flex justify-center items-center">
 			<div class="bg-slate-900 flex items-center justify-center px-4">
 				<div class="w-full max-w-lg bg-white rounded-2xl shadow-xl p-8">
