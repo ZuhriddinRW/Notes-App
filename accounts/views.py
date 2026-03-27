@@ -48,8 +48,8 @@ def login_view(request):
 @login_required(login_url="login")
 def logout_view(request):
     logout(request)
-    messages.info(request, "You have successfully logged out.")
-    return redirect("login")
+    messages.info(request, "You have been logged out.")
+    return redirect("welcome")
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
