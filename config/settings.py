@@ -6,9 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-i(ur3m2=&$vwzseshhfi28x7t#&qycl6t7c522xxahynf$k27t"
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['13.60.3.11', 'localhost']
 
 INSTALLED_APPS = [
     "unfold",
