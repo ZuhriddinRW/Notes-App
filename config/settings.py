@@ -1,5 +1,5 @@
 from pathlib import Path
-
+from datetime import timedelta
 from django.conf.global_settings import AUTH_USER_MODEL
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,18 +10,29 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
-    "unfold",
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'widget_tweaks',
+]
+
+PROJECT_APPS = [
     "notes",
     "accounts",
+    "api",
 ]
+
+THIRD_PARTY_APPS = [
+    "unfold",
+    "widget_tweaks",
+    "rest_framework",
+    "drf_spectacular",
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -74,6 +85,24 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Notes API',
+    'DESCRIPTION': 'JWT-authenticated Notes CRUD API',
+    'VERSION': '1.0.0',
+}
 
 LANGUAGE_CODE = "en-us"
 
